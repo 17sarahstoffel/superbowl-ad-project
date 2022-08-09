@@ -1,22 +1,26 @@
 # superbowl-ad-project
-Looking for trends in Superbowl ads in the last 20 years
- 
-## Project Proposal
-For this project, we will work with a dataset that covers Super Bowl ads from 2000 to 2020. This dataset holds a description of ads from the 10 brands that had the most advertisements in Super Bowls in those 20 years. The dataset also contains a direct YouTube URL for each ad, and the descriptors are funny, shows the product quickly, patriotic, celebrity (involves a celebrity), danger (contains danger), animal (involves animals), and uses sex (if sexual in nature).
-        	We plan to study patterns in those ads and determine what kinds of ads have been used most often in the past 20 years, and which ones get rewatched the most on YouTube. In addition, we will investigate how the trend of ad length has changed in the last 20 years.
 
-        	Our tasks include the following:
-Importing and cleaning of ad data.
-Use of YouTube API to get likes, dislikes, length, and views for each YouTube link.
-Addition of columns to the ad data frame with YouTube data.
-An exploratory analysis of the targeted research questions.
-Calculate summary statistics on the counts of the ad tags.
-Perform our hypothesis test.
-* see below
-Perform our linear regression.
-* see below
+#### Contributors (Group 4)
+Armand Dauti, Alan Jallah, Sarah Stoffel, Scott Neubauer
 
-For visual representation, we have for now decided to create a final summary using a scatter plot with a regression line (ad length vs ad year), a bar chart (YouTube views separated by type), and a pie chart to show the types of ads.
+## Synopsis
+In this project we examined the rewatchability and topic distribtion of televised ads over the past 20 Superbowls. Our dataset was found on [GitHub](https://github.com/fivethirtyeight/superbowl-ads) and was used in an [article](https://projects.fivethirtyeight.com/super-bowl-ads/) by FiveThirtyEight.
 
-*Hypothesis: Funny ads get rewatched on YouTube the most.
-*Regression: Ad length over the years.
+## Process
+Our first task was to import and clean the data from our dataset then import and clean the data from the YouTube Data v3 API. We used Pandas methods for the importing and cleaning of the original dataset (.csv file) and 'requests.get' to retrieve the YouTube analytics in JSON format. The YouTube data contained some empty records as some of the linked videos were either deleted or set to Private by the uploader. To get around this, we had to remove the records associated. Once the data was cleaned and organized, we moved on to answering the following questions.
+
+## Questions
+1. What was the distribution of ad categories by count over the past 20 years?
+	* This was addressed by separating and counting the relevant data using Pandas then plotting it with MatPlotLib pie charts.
+2. What was the distribution of YouTube view counts per ad tag over the past 20 years?
+	* This was addressed by separating and counting the relevant data using Pandas then plotting it with MatPlotLib bar charts.
+3. What category of ad was viewed the most after initial airing?
+	* This was addressed by extracting the view count data according to whether or not an ad was tagged with the 'Funny' category. Two series were created then a Chi Square test was performed. This is expanded upon later.
+4. How has ad length varied over the past 20 years?
+	* This was addressed by extracting the ad length data and year aired data then plotting it on MatPlotLib scatter plots. Linear regressions were ran on the data to develop a predictive model. An outlier analysis was performed to rule out any potential outliers. The same linear regression was ran to observe the effects after outliers were removed.
+
+## Hypothesis Test
+Our hypothesis was that YouTube videos with the 'Funny' tag received more views than videos without the 'Funny' tag. The null hypothesis was that there is no statistically significant difference in median view count between the 'Funny' and 'Not Funny' videos. The results are discussed in the Final Data Analysis Jupyter Notebook.
+
+## Further Examination
+A valuable insight into the success of each ad campaign would be to extract the monetary gain for each company after the airing of their ads.
